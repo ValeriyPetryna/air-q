@@ -1,0 +1,16 @@
+version: '3.3'
+
+services:
+  api:
+    container_name: air-q
+    image: api:1.0.0
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - ${APP_PORT}:${APP_PORT}
+    volumes:
+      - ./:/usr/src/app
+    restart: unless-stopped
+    env_file:
+      - .env
